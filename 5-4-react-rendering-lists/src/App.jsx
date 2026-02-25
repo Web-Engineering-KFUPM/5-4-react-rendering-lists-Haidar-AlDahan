@@ -124,7 +124,7 @@ export default function App() {
   // Helper function (no need to edit this)
   function mutateCourseByIndex(index, updater) {
     setCourses((cs) =>
-      cs.map((c, i) => (i === index ? { ...c, tasks: updater(c.tasks) } : c))
+      cs.map((c, i) => (i === index ? { ...c, tasks: updater(c.tasks) } : c)),
     );
   }
 
@@ -145,6 +145,14 @@ export default function App() {
         - index={idx}
         - onMutateCourse={mutateCourseByIndex}
   */}
+        {courses.map((course, idx) => (
+          <CourseCard
+            key={course.id}
+            course={course}
+            index={idx}
+            onMutateCourse={mutateCourseByIndex}
+          ></CourseCard>
+        ))}
       </section>
     </main>
   );
